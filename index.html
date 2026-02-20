@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Harsha Varthan E P | H24 Creationz</title>
+    <meta name="description" content="Portfolio of Harsha Varthan E P - Tech Innovator, Developer, and Designer.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <style>
+        :root {
+            /* Zen Dark Palette */
+            --bg-color: #050505;
+            --surface-color: #0a0a0a;
+            --surface-highlight: #121212;
+            --border-color: #222;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --accent-glow: rgba(255, 255, 255, 0.08);
+            --lab-accent: #00e5ff; 
+            
+            /* Sizing */
+            --nav-height: 70px;
+            --spacing-container: 2rem;
+            
+            --transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--nav-height);
+            width: 100%;
+            overflow-x: hidden; /* Critical Fix for side-scroll */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            width: 100%;
+            overflow-x: hidden; /* Critical Fix */
+            -webkit-font-smoothing: antialiased;
+            position: relative;
+        }
+
+        /* --- Layout Utilities --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-container);
+            width: 100%;
+        }
+
+        .section {
+            min-height: 90vh; 
+            padding: 5rem 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-bottom: 1px solid var(--border-color);
+            width: 100%;
+        }
+
+        .section-header {
+            margin-bottom: 3rem;
+        }
+
+        .section-tag {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            display: block;
+            font-weight: 600;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text-primary);
+        }
+
+        h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--nav-height);
+            background: rgba(5, 5, 5, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            letter-spacing: -0.02em;
+            z-index: 1002;
+        }
+
+        /* Desktop Menu */
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        /* Mobile Hamburger */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            z-index: 1003;
+        }
+        
+        .bar {
+            display: block;
+            width: 25px;
+            height: 2px;
+            margin: 5px auto;
+            -webkit-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+            background-color: white;
+        }
+
+        /* --- Hero --- */
+        .hero {
+            min-height: 100vh;
+            padding-top: var(--nav-height);
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            line-height: 1.1;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #fff, #777);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- Stats Bar (Animated) --- */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            display: flex; 
+            align-items: center;
+        }
+        
+        .counter { display: inline-block; }
+
+        .stat-item p {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            letter-spacing: 0.05em;
+            margin-top: 0.5rem;
+        }
+
+        /* --- Spotlight Cards --- */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            width: 100%;
+        }
+
+        .spotlight-card {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition);
+        }
+
+        /* Desktop Hover Glow (Disabled on touch) */
+        @media (hover: hover) {
+            .spotlight-card::before {
+                content: "";
+                position: absolute;
+                top: 0; left: 0; right: 0; bottom: 0;
+                background: radial-gradient(
+                    600px circle at var(--mouse-x) var(--mouse-y), 
+                    var(--accent-glow), 
+                    transparent 40%
+                );
+                opacity: 0;
+                transition: opacity 0.5s;
+                pointer-events: none;
+                z-index: 1;
+            }
+            .spotlight-card:hover::before { opacity: 1; }
+            .spotlight-card:hover { border-color: #333; transform: translateY(-3px); }
+        }
+
+        .card-content { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; }
+        .card-icon { color: #fff; margin-bottom: 1.5rem; }
+        
+        .project-link {
+            margin-top: auto;
+            padding-top: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            border: 1px solid #333;
+            border-radius: 50px;
+            color: #ccc;
+        }
+
+        /* --- Lab Highlight --- */
+        .lab-card {
+            border: 1px solid rgba(0, 229, 255, 0.2);
+            background: linear-gradient(180deg, rgba(0,229,255,0.02) 0%, rgba(0,0,0,0) 100%);
+        }
+        .lab-card .section-tag { color: var(--lab-accent); }
+
+        /* --- Buttons --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+            text-decoration: none;
+        }
+
+        .btn-primary { background: #fff; color: #000; border: 1px solid #fff; }
+        .btn-outline { background: transparent; border: 1px solid #444; color: #fff; }
+        .btn-book { flex: 1; text-align: center; background: #1a1a1a; border: 1px solid #333; color: #fff; }
+        .btn-whatsapp { background: #25D366; color: white; border: none; width: 100%; }
+
+        /* --- MOBILE OPTIMIZATION (Fixing padding & alignment) --- */
+        @media (max-width: 900px) {
+            /* 1. Global Padding Fix */
+            .container { 
+                padding: 0 1.5rem; /* Symmetric padding */
+                width: 100%;
+            }
+
+            /* 2. Menu Reset */
+            .hamburger { display: block; }
+
+            .nav-links {
+                position: fixed;
+                left: -100%;
+                top: 0;
+                flex-direction: column;
+                background-color: #000; /* Full black background */
+                width: 100%;
+                height: 100vh;
+                text-align: center;
+                transition: 0.3s;
+                padding-top: 8rem;
+                gap: 2rem;
+                z-index: 1001;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links a { font-size: 1.5rem; }
+
+            /* Hamburger Animation */
+            .hamburger.active .bar:nth-child(2) { opacity: 0; }
+            .hamburger.active .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+            .hamburger.active .bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+            /* 3. Hero Alignment & Sizing */
+            .hero {
+                text-align: center; /* Center align to fix one-sided feel */
+                justify-content: center;
+                min-height: auto;
+                padding-bottom: 4rem;
+            }
+
+            .hero-title { 
+                font-size: 2.8rem; /* Smaller font to fit screen */
+                line-height: 1.2;
+            }
+
+            .hero p { 
+                font-size: 1rem; 
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero div { 
+                /* The button container */
+                flex-direction: column; 
+                width: 100%; 
+            }
+
+            /* 4. Section Adjustments */
+            .section { 
+                padding: 4rem 0; 
+                min-height: auto; 
+                align-items: center; /* Center align section content */
+            }
+
+            .section-header {
+                text-align: center;
+                width: 100%;
+            }
+            
+            .card-grid {
+                grid-template-columns: 1fr; /* Strict single column */
+                gap: 1.5rem;
+            }
+
+            /* 5. Stats Grid Balancing */
+            .stats-grid {
+                grid-template-columns: 1fr 1fr; /* 2x2 grid */
+                gap: 2rem;
+                margin-top: 3rem;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .stat-item {
+                align-items: center; /* Center flex items */
+            }
+
+            .stat-item h3 { font-size: 2rem; }
+
+            /* 6. Button Full Widths */
+            .btn { width: 100%; } 
+            
+            /* Hide desktop CTA in nav */
+            nav .btn-primary { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container nav-container">
+            <a href="#" class="logo">H24 CREATIONZ</a>
+            
+            <ul class="nav-links">
+                <li><a href="#services" onclick="closeMenu()">Services</a></li>
+                <li><a href="#lab" onclick="closeMenu()">The Lab</a></li>
+                <li><a href="#clients" onclick="closeMenu()">Work</a></li>
+                <li><a href="#design" onclick="closeMenu()">Design</a></li>
+                <li><a href="#mobile" onclick="closeMenu()">Apps</a></li>
+                <li><a href="#books" onclick="closeMenu()">Books</a></li>
+                <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+            </ul>
+
+            <div class="hamburger" onclick="mobileMenu()">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+
+            <a href="https://wa.me/918667701001" target="_blank" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.8rem;">
+                Let's Talk <i data-feather="message-circle" style="width: 14px;"></i>
+            </a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <span class="section-tag">Harsha Varthan E P</span>
+            <h1 class="hero-title">Zen. Stealth.<br>Innovation.</h1>
+            <p style="color: var(--text-secondary); max-width: 600px; font-size: 1.1rem; margin-bottom: 3rem;">
+                I architect digital ecosystems. From high-performance websites and Android applications to bestselling books and stealthy brand identities.
+            </p>
+            
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a href="#clients" class="btn btn-primary">View Portfolio</a>
+                <a href="#contact" class="btn btn-outline">Start Conversation</a>
+            </div>
+
+            <div class="stats-grid" id="stats-section">
+                <div class="stat-item">
+                    <h3><span class="counter" data-target="5">0</span>+</h3>
+                    <p>Years Experience</p>
+                </div>
+                <div class="stat-item">
+                    <h3><span class="counter" data-target="20">0</span>+</h3>
+                    <p>Projects Done</p>
+                </div>
+                <div class="stat-item">
+                    <h3><span class="counter" data-target="10">0</span>+</h3>
+                    <p>Apps Published</p>
+                </div>
+                <div class="stat-item">
+                    <h3><span class="counter" data-target="2">0</span></h3>
+                    <p>Books Authored</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Capabilities</span>
+                <h2>What I Deliver</h2>
+            </div>
+            
+            <div class="card-grid">
+                <div class="spotlight-card">
+                    <div class="card-content">
+                        <i data-feather="monitor" class="card-icon"></i>
+                        <h3>Web Development</h3>
+                        <p style="color: #999; font-size: 0.9rem;">High-performance websites tailored for SEO and user conversion. Specializing in responsive, single-page, and corporate platforms.</p>
+                        <div class="tags">
+                            <span class="tag">HTML/CSS/JS</span>
+                            <span class="tag">SEO</span>
+                            <span class="tag">Deploy</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="spotlight-card">
+                    <div class="card-content">
+                        <i data-feather="smartphone" class="card-icon"></i>
+                        <h3>App Development</h3>
+                        <p style="color: #999; font-size: 0.9rem;">Building robust Android applications. From concept to Play Store publication, handling UI/UX and functionality.</p>
+                        <div class="tags">
+                            <span class="tag">Android</span>
+                            <span class="tag">Mobile UX</span>
+                            <span class="tag">Play Console</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="spotlight-card">
+                    <div class="card-content">
+                        <i data-feather="pen-tool" class="card-icon"></i>
+                        <h3>Graphic Design</h3>
+                        <p style="color: #999; font-size: 0.9rem;">Stealthy, minimal, and modern branding. Social media kits, posters, and visual identities that stand out.</p>
+                        <div class="tags">
+                            <span class="tag">Branding</span>
+                            <span class="tag">Social Media</span>
+                            <span class="tag">Identity</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="lab" class="section">
+        <div class="container">
+            <div class="spotlight-card lab-card">
+                <div class="card-content" style="flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 2rem;">
+                    <div style="max-width: 600px;">
+                        <span class="section-tag">Experimental Division</span>
+                        <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">H24 Software Lab</h2>
+                        <p style="color: #ccc;">
+                            The home of my experimental engineering. Hosting dynamic web tools, QR generators, file transfer protocols, and cutting-edge SaaS concepts.
+                        </p>
+                    </div>
+                    <a href="https://harshavarthanep.github.io/apps/" target="_blank" class="btn btn-outline" style="border-color: var(--lab-accent); color: var(--lab-accent);">
+                        Enter The Lab <i data-feather="cpu"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="clients" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Service Work</span>
+                <h2>Client Success Stories</h2>
+            </div>
+            
+            <div class="card-grid">
+                <div class="spotlight-card">
+                    <div class="card-content">
+                        <i data-feather="activity" class="card-icon"></i>
+                        <h3>DAP Fitness Studio</h3>
+                        <p style="color: #999;">Designed and developed a modern fitness website with SEO optimization to boost local visibility.</p>
+                        <a href="https://dap-fitness-studio-web.vercel.app/" target="_blank" class="project-link">
+                            Visit Website <i data-feather="arrow-right" style="width: 16px;"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="spotlight-card">
+                    <div class="card-content">
+                        <i data-feather="plus-square" class="card-icon"></i>
+                        <h3>Arjuna Hospital</h3>
+                        <p style="color: #999;">Executed a comprehensive SEO strategy and content management system for ranking.</p>
+                        <a href="https://www.arjunahospital.in" target="_blank" class="project-link">
+                            Visit Website <i data-feather="arrow-right" style="width: 16px;"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="spotlight-card">
+                    <div class="card-content">
+                        <i data-feather="heart" class="card-icon"></i>
+                        <h3>LKS Polyclinic</h3>
+                        <p style="color: #999;">Complete website revamp and social media integration for specialized departments.</p>
+                        <a href="https://www.lkspolyclinic.com" target="_blank" class="project-link">
+                            Visit Website <i data-feather="arrow-right" style="width: 16px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="design" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Visuals</span>
+                <h2>The Design Vault</h2>
+            </div>
+            
+            <div class="spotlight-card">
+                <div class="card-content" style="flex-direction: row; flex-wrap: wrap; align-items: center; gap: 2rem;">
+                    <div style="flex: 1; min-width: 300px;">
+                        <i data-feather="folder" class="card-icon"></i>
+                        <h3>Graphic Design Archive</h3>
+                        <p style="color: #999;">
+                            A secured drive containing my portfolio of posters, logos, social media kits, and brand identity work.
+                        </p>
+                    </div>
+                    <a href="https://drive.google.com/drive/folders/1gS8AA5x-DoGLNGvXPDyXu_a4bJl2q08c?usp=sharing" target="_blank" class="btn btn-outline" style="border-style: dashed;">
+                        Open Drive Folder <i data-feather="hard-drive"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="mobile" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">H24 Products</span>
+                <h2>Mobile Applications</h2>
+            </div>
+
+            <div class="spotlight-card" style="padding: 3rem;">
+                <div class="card-content" style="text-align: center; align-items: center;">
+                    <i data-feather="smartphone" style="width: 48px; height: 48px; margin-bottom: 1rem; color: #fff;"></i>
+                    <h3 style="font-size: 2rem; margin-bottom: 1rem;">Play Store Collection</h3>
+                    <p style="max-width: 600px; color: #999; margin-bottom: 2rem;">
+                        Over 10 published applications including <strong>Confident Candidate</strong> and <strong>Aegan</strong>.
+                    </p>
+                    <a href="https://play.google.com/store/apps/dev?id=8039460198278259208" target="_blank" class="btn btn-primary">
+                        View Play Store Profile <i data-feather="external-link"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="books" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Literature</span>
+                <h2>Published Books</h2>
+            </div>
+
+            <div class="card-grid">
+                <div class="spotlight-card">
+                    <div class="card-content">
+                        <h3>Mind Feast</h3>
+                        <p style="color: #999; margin-bottom: 2rem;">Rejuvenate your mind. A guide to self-esteem and personality.</p>
+                        <div style="display: flex; gap: 1rem; margin-top: auto;">
+                            <a href="https://www.flipkart.com/search?q=Mind%20Feast%20Harsha%20Varthan" target="_blank" class="btn btn-book">Flipkart</a>
+                            <a href="https://www.amazon.in/s?k=Mind+Feast+Harsha+Varthan" target="_blank" class="btn btn-book">Amazon</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="spotlight-card">
+                    <div class="card-content">
+                        <h3>Inspiring Illusions</h3>
+                        <p style="color: #999; margin-bottom: 2rem;">Unique quotes for unique people.</p>
+                        <div style="display: flex; gap: 1rem; margin-top: auto;">
+                            <a href="https://www.amazon.in/s?k=Inspiring+Illusions+Harsha+Varthan" target="_blank" class="btn btn-book">Amazon</a>
+                            <a href="https://www.notionpress.com/read/inspiring-illusions" target="_blank" class="btn btn-book">Notion Press</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section" style="border: none;">
+        <div class="container">
+            <div class="spotlight-card" style="text-align: center; padding: 4rem 2rem;">
+                <div class="card-content" style="align-items: center;">
+                    <span class="section-tag">Get Connected</span>
+                    <h2 style="margin-bottom: 2rem;">Start a Conversation</h2>
+                    <p style="color: #999; max-width: 500px; margin-bottom: 3rem;">
+                        Whether you need a freelancer for your next big project or a partner for your startup. I am available.
+                    </p>
+
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem; width: 100%; max-width: 400px;">
+                        <a href="https://wa.me/918667701001" target="_blank" class="btn btn-whatsapp">
+                            <i data-feather="message-circle"></i> Chat on WhatsApp
+                        </a>
+
+                        <a href="tel:+918667701001" class="btn btn-outline" style="width: 100%; justify-content: center;">
+                            <i data-feather="phone"></i> +91 8667701001
+                        </a>
+
+                        <a href="mailto:h24creationz@gmail.com" class="btn btn-outline" style="width: 100%; justify-content: center; border-color: #333; color: #888;">
+                            h24creationz@gmail.com
+                        </a>
+                    </div>
+
+                    <div style="margin-top: 4rem; display: flex; gap: 2rem;">
+                        <a href="https://github.com/harshavarthanep" target="_blank" style="color: #666;"><i data-feather="github"></i></a>
+                        <a href="https://www.linkedin.com/in/harsha-varthan-e-p-01878b1a3/" target="_blank" style="color: #666;"><i data-feather="linkedin"></i></a>
+                        <a href="https://play.google.com/store/apps/dev?id=8039460198278259208" target="_blank" style="color: #666;"><i data-feather="smartphone"></i></a>
+                        <a href="https://sites.google.com/view/h24creationz-business-card/home" target="_blank" style="color: #666;"><i data-feather="globe"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <p style="text-align: center; color: #333; margin-top: 3rem; font-size: 0.8rem;">
+                &copy; 2026 H24 Creationz | Harsha Varthan E P
+            </p>
+        </div>
+    </section>
+
+    <script>
+        // 1. Initialize Feather Icons
+        feather.replace();
+
+        // 2. Spotlight Mouse Effect (Only works on Desktop via hover media query in CSS)
+        const cards = document.querySelectorAll('.spotlight-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
+        // 3. Mobile Menu Logic
+        const hamburger = document.querySelector(".hamburger");
+        const navMenu = document.querySelector(".nav-links");
+
+        function mobileMenu() {
+            hamburger.classList.toggle("active");
+            navMenu.classList.toggle("active");
+        }
+        
+        function closeMenu() {
+            hamburger.classList.remove("active");
+            navMenu.classList.remove("active");
+        }
+
+        // 4. Number Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200; 
+
+        const animateCounters = () => {
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const inc = target / speed;
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc);
+                        setTimeout(updateCount, 25);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCount();
+            });
+        };
+
+        const statsSection = document.querySelector('#stats-section');
+        const observer = new IntersectionObserver((entries) => {
+            if(entries[0].isIntersecting) {
+                animateCounters();
+                observer.unobserve(statsSection);
+            }
+        }, { threshold: 0.2 }); 
+
+        if(statsSection) {
+            observer.observe(statsSection);
+        }
+    </script>
+</body>
+</html>

@@ -539,13 +539,14 @@
         }
 
         /** INPUT EVENTS **/
-        window.addEventListener('mousedown', flipGravity);
-        window.addEventListener('touchstart', (e) => {
-            e.preventDefault(); 
+        // Bind directly to the canvas so UI buttons work normally on mobile
+        canvas.addEventListener('mousedown', flipGravity);
+        canvas.addEventListener('touchstart', (e) => {
+            e.preventDefault(); // Prevents zooming/scrolling only on the game area
             flipGravity();
         }, {passive: false});
 
-        // Prevent scrolling spacebar
+        // Keydown stays on the window for desktop spacebar support
         window.addEventListener('keydown', (e) => {
             if (e.code === 'Space') {
                 e.preventDefault();

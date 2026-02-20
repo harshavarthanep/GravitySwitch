@@ -525,17 +525,17 @@
                 }
             }
 
-            // 4. Update Particles
-            particles.forEach((p, i) => {
-                p.x += p.vx;
-                p.y += p.vy;
-                p.life -= 0.05;
-                ctx.globalAlpha = p.life;
-                ctx.fillStyle = p.color;
-                ctx.fillRect(p.x, p.y, p.size, p.size);
-                ctx.globalAlpha = 1.0;
-                if (p.life <= 0) particles.splice(i, 1);
-            });
+        // 4. Update Particles (Iterating backwards to prevent stutter)
+        for (let i = particles.length - 1; i >= 0; i--) {
+            let p = particles[i];
+            p.x += p.vx;
+            p.y += p.vy;
+            p.life -= 0.05;
+            ctx.globalAlpha = p.life > 0 ? p.life : 0;
+            ctx.fillStyle = p.color;
+            ctx.fillRect(p.x, p.y, p.size, p.size);
+            ctx.globalAlpha = 1.0;
+            if (p.life <= 0) particles.splice(i, 1);
         }
 
         /** INPUT EVENTS **/
